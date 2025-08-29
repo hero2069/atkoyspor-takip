@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Öğrenciler - Atköy Spor Okulu</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background: #f8f9fa; }
+    .btn-danger { background-color: #D32F2F; }
+    .btn-danger:hover { background-color: #B71C1C; }
+    .card { border-top: 5px solid #D32F2F; }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2 sidebar text-center">
+        <div class="logo">
+          <img src="/images/atköy.png" alt="Logo">
+        </div>
+        <hr>
+        <a href="/dashboard"><i class="fas fa-home"></i> Dashboard</a>
+        <a href="/ogrenciler"><i class="fas fa-users"></i> Öğrenciler</a>
+        <a href="#"><i class="fas fa-cogs"></i> Ekipman</a>
+        <a href="#"><i class="fas fa-chart-line"></i> Analiz</a>
+        <a href="#"><i class="fas fa-calendar"></i> Takvim</a>
+        <a href="#"><i class="fas fa-sliders-h"></i> Ayarlar</a>
+      </div>
+
+      <div class="col-md-10 p-4">
+        <nav class="navbar mb-4 shadow-sm">
+          <div class="d-flex justify-content-between align-items-center w-100">
+            <h4 class="text-danger mb-0">Öğrenci Yönetimi</h4>
+            <a href="/" class="btn btn-outline-danger btn-sm">Çıkış Yap</a>
+          </div>
+        </nav>
+
+        <div class="d-flex justify-content-between mb-3">
+          <h5>Öğrenci Listesi</h5>
+          <button class="btn btn-danger btn-sm">+ Öğrenci Ekle</button>
+        </div>
+
+        <table class="table table-bordered table-striped">
+          <thead class="bg-danger text-white">
+            <tr>
+              <th>Foto</th>
+              <th>Ad Soyad</th>
+              <th>TC No</th>
+              <th>Branş</th>
+              <th>Okul</th>
+              <th>İşlem</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><img src="https://via.placeholder.com/40" class="rounded"></td>
+              <td>Ali Yılmaz</td>
+              <td>12345678901</td>
+              <td>Futbol</td>
+              <td>Atakent İlköğretim</td>
+              <td>
+                <a href="/ogrenci/1" class="btn btn-sm btn-outline-primary">Detay</a>
+              </td>
+            </tr>
+            <tr>
+              <td><img src="https://via.placeholder.com/40" class="rounded"></td>
+              <td>Zeynep Kaya</td>
+              <td>23456789012</td>
+              <td>Basketbol</td>
+              <td>Bahçeşehir Lisesi</td>
+              <td>
+                <a href="/ogrenci/2" class="btn btn-sm btn-outline-primary">Detay</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
