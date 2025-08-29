@@ -42,7 +42,11 @@ app.get('/dashboard', (req, res) => {
   if (!req.session.user) return res.redirect('/');
   res.sendFile(path.join(__dirname, 'views', 'dashboard.html'));
 });
-
+// Ogrenciler
+app.get('/ogrenciler', (req, res) => {
+  if (!req.session.user) return res.redirect('/');
+  res.sendFile(path.join(__dirname, 'views', 'ogrenciler.html'));
+});
 // Sunucu başlat
 app.listen(PORT, () => {
   console.log(`✅ Atköy Spor Takip çalışıyor: http://localhost:${PORT}`);
