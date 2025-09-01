@@ -74,25 +74,25 @@
                 <div class="col-6">
                   <div class="form-group">
                     <label>TC Kimlik No</label>
-                    <input type="text" id="tc" name="tc" class="form-control" maxlength="11" oninput="this.value = this.value.replace(/[^0-9]/g, ''); if(this.value.length === 11) validateTC(this.value);">
+                    <input type="text" id="tc" name="tc"  value="<%= ogrenci.tc_no %>" class="form-control" maxlength="11" oninput="this.value = this.value.replace(/[^0-9]/g, ''); if(this.value.length === 11) validateTC(this.value);">
                   </div>
                 </div>
                 <div class="col-6">
                   <div class="form-group">
                     <label>Adı</label>
-                    <input type="text" id="ad" name="ad" class="form-control" oninput="this.value = this.value.replace(/[^A-Za-zÇcÖöÜuIŞs ]/g, '')">
+                    <input type="text" id="ad" name="ad" value="<%= ogrenci.ad %>" class="form-control" oninput="this.value = this.value.replace(/[^A-Za-zÇcÖöÜuIŞs ]/g, '')">
                   </div>
                 </div>
                 <div class="col-6">
                   <div class="form-group">
                     <label>Soyadı</label>
-                    <input type="text" id="soyad" name="soyad" class="form-control" oninput="this.value = this.value.replace(/[^A-Za-zÇcÖöÜuIŞs ]/g, '')">
+                    <input type="text" id="soyad" name="soyad" value="<%= ogrenci.soyad %>" class="form-control" oninput="this.value = this.value.replace(/[^A-Za-zÇcÖöÜuIŞs ]/g, '')">
                   </div>
                 </div>
                 <div class="col-6">
                   <div class="form-group">
                     <label>Doğum Tarihi</label>
-                    <input type="date" id="dogumTarihi" name="dogumTarihi" class="form-control">
+                    <input type="date" id="dogumTarihi" name="dogumTarihi"  value="<%= ogrenci.dogum_tarihi %>" class="form-control">
                   </div>
                 </div>
                 <div class="col-6">
