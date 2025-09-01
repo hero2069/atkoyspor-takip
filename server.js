@@ -56,7 +56,15 @@ app.get('/ogrenciler', (req, res) => {
 // Öğrenci Detay Sayfası
 app.get('/ogrenci-detay', (req, res) => {
   if (!req.session.user) return res.redirect('/');
-  res.sendFile(path.join(__dirname, 'views', 'ogrenci-detay.html'));
+  const id = req.query.id || 1; // test için sabit ID
+
+  const db = require('./models/db');
+  db.get("SELECT * FROM ogrenciler WHERE id = ?", [id], (err, row) => {
+    if (err || !row) {
+      return res.send('Öğrenci bulunamadı');
+    }
+    res.render('ogrenci-detay', { ogrenci: row });
+  });
 });
 
 // Öğrenci Ekleme Sayfası (aynı detay formu olabilir)
