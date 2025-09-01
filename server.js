@@ -70,7 +70,7 @@ app.get('/ogrenci-detay', (req, res) => {
 // Öğrenci Ekleme Sayfası (aynı detay formu olabilir)
 app.get('/ogrenci-ekle', (req, res) => {
   if (!req.session.user) return res.redirect('/');
-  res.sendFile(path.join(__dirname, 'views', 'ogrenci-detay.html'));
+  res.sendFile(path.join(__dirname, 'views', 'ogrenci-detay.ejs'));
 });
 // Öğrenci Kaydet
 app.post('/ogrenci-kaydet', (req, res) => {
