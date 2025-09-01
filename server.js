@@ -56,7 +56,8 @@ app.get('/ogrenciler', (req, res) => {
 // Öğrenci Detay Sayfası
 app.get('/ogrenci-detay', (req, res) => {
   if (!req.session.user) return res.redirect('/');
-  const id = req.query.id || 1; // test için sabit ID
+  res.render('ogrenci-detay');
+});
 
   const db = require('./models/db');
   db.get("SELECT * FROM ogrenciler WHERE id = ?", [id], (err, row) => {
@@ -70,7 +71,7 @@ app.get('/ogrenci-detay', (req, res) => {
 // Öğrenci Ekleme Sayfası (aynı detay formu olabilir)
 app.get('/ogrenci-ekle', (req, res) => {
   if (!req.session.user) return res.redirect('/');
-  res.sendFile(path.join(__dirname, 'views', 'ogrenci-detay.ejs'));
+   res.render('ogrenci-detay');
 });
 // Öğrenci Kaydet
 app.post('/ogrenci-kaydet', (req, res) => {
