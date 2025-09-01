@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Öğrenciler - Atköy Spor Okulu</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2 text-center p-3" style="background: #D32F2F; min-height: 100vh; color: white;">
+        <img src="/images/atköy.png" alt="Logo" class="img-fluid mb-3" style="max-width: 180px;">
+        <hr>
+        <a href="/dashboard" class="text-white text-decoration-none d-block p-2">Dashboard</a>
+        <a href="/ogrenciler" class="text-white text-decoration-none d-block p-2">Öğrenciler</a>
+        <a href="/" class="btn btn-light btn-sm mt-4">Çıkış Yap</a>
+      </div>
+
+      <div class="col-md-10 p-4">
+        <h3 class="text-danger">Öğrenci Listesi</h3>
+        <a href="/ogrenci-detay" class="btn btn-danger mb-3">+ Yeni Öğrenci Ekle</a>
+
+        <table class="table table-bordered table-striped">
+          <thead class="bg-danger text-white">
+            <tr>
+              <th>Ad Soyad</th>
+              <th>TC No</th>
+              <th>Branş</th>
+              <th>Okul</th>
+              <th>İşlem</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if (ogrenciler && ogrenciler.length > 0) { %>
+              <% ogrenciler.forEach(ogrenci => { %>
+                <tr>
+                  <td><%= ogrenci.ad %> <%= ogrenci.soyad %></td>
+                  <td><%= ogrenci.tc_no %></td>
+                  <td><%= ogrenci.spor_bransi %></td>
+                  <td><%= ogrenci.okul %></td>
+                  <td>
+                    <a href="/ogrenci-detay?id=<%= ogrenci.id %>" class="btn btn-sm btn-outline-primary">Düzenle</a>
+                  </td>
+                </tr>
+              <% }); %>
+            <% } else { %>
+              <tr>
+                <td colspan="5" class="text-center">Henüz öğrenci kaydı yok</td>
+              </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
