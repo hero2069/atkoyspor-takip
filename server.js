@@ -92,8 +92,11 @@ app.post('/ogrenci-kaydet', (req, res) => {
     acilYakinlik, acilTel, req.session.user
   );
 
-  stmt.finalize(() => {
-    res.send('Öğrenci başarıyla kaydedildi!');
+stmt.finalize(() => {
+    res.send(`
+      <h3>✅ Öğrenci başarıyla kaydedildi!</h3>
+      <p><a href="/ogrenciler">Öğrenci listesine dön</a></p>
+    `);
   });
 });
 // Sunucu başlat
