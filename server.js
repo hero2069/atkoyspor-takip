@@ -66,7 +66,6 @@ app.get('/ogrenci-detay', (req, res) => {
     }
     res.render('ogrenci-detay', { ogrenci: row });
   });
-});
 
 // Öğrenci Ekleme Sayfası (aynı detay formu olabilir)
 app.get('/ogrenci-ekle', (req, res) => {
