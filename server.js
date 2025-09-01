@@ -68,12 +68,19 @@ app.get('/ogrenci-ekle', (req, res) => {
 app.post('/ogrenci-kaydet', (req, res) => {
   if (!req.session.user) return res.status(403).send('Erişim reddedildi');
 
+  console.log('Gelen veriler:', req.body); // LOG: Gelen verileri gör
+
   const {
     tc, ad, soyad, dogumTarihi, dogumYeri, boy, kilo, kanGrubu,
     brans, telefon, okul, babaAd, babaSoyad, babaTel, babaMeslek,
     anneAd, anneSoyad, anneTel, anneMeslek, adres, acilAd, acilSoyad,
     acilYakinlik, acilTel
   } = req.body;
+
+  // Boş alan kontrolü
+  if (!tc || !ad || !soyad) {
+    return res.send('Lütfen TC, ad ve soyadı doldurun.');
+  }
 
   const db = require('./models/db');
 
@@ -89,15 +96,20 @@ app.post('/ogrenci-kaydet', (req, res) => {
     tc, ad, soyad, dogumTarihi, dogumYeri, boy, kilo, kanGrubu,
     brans, telefon, okul, babaAd, babaSoyad, babaTel, babaMeslek,
     anneAd, anneSoyad, anneTel, anneMeslek, adres, acilAd, acilSoyad,
-    acilYakinlik, acilTel, req.session.user
+    acilYakinlik, acilTel, req.session.user,
+    (err) => {
+      if (err) {
+        console.error('Veri ekleme hatası:', err);
+        return res.send('Veri kaydedilemedi: ' + err.message);
+      }
+      res.send(`
+        <h3>✅ Öğrenci başarıyla kaydedildi!</h3>
+        <p>TC: ${tc}</p>
+        <p>Ad Soyad: ${ad} ${soyad}</p>
+        <a href="/ogrenciler" class="btn btn-primary">Listeye Dön</a>
+      `);
+    }
   );
-
-stmt.finalize(() => {
-    res.send(`
-      <h3>✅ Öğrenci başarıyla kaydedildi!</h3>
-      <p><a href="/ogrenciler">Öğrenci listesine dön</a></p>
-    `);
-  });
 });
 // Sunucu başlat
 app.listen(PORT, () => {
