@@ -47,8 +47,20 @@ app.get('/ogrenciler', (req, res) => {
   if (!req.session.user) return res.redirect('/');
   res.sendFile(path.join(__dirname, 'views', 'ogrenciler.html'));
 });
-// OgrenciDetay
+// Öğrenci Listesi Sayfası
+app.get('/ogrenciler', (req, res) => {
+  if (!req.session.user) return res.redirect('/');
+  res.sendFile(path.join(__dirname, 'views', 'ogrenciler.html'));
+});
+
+// Öğrenci Detay Sayfası
 app.get('/ogrenci-detay', (req, res) => {
+  if (!req.session.user) return res.redirect('/');
+  res.sendFile(path.join(__dirname, 'views', 'ogrenci-detay.html'));
+});
+
+// Öğrenci Ekleme Sayfası (aynı detay formu olabilir)
+app.get('/ogrenci-ekle', (req, res) => {
   if (!req.session.user) return res.redirect('/');
   res.sendFile(path.join(__dirname, 'views', 'ogrenci-detay.html'));
 });
