@@ -46,9 +46,16 @@ app.get('/dashboard', (req, res) => {
 // Öğrenci Listesi
 app.get('/ogrenciler', (req, res) => {
   if (!req.session.user) return res.redirect('/');
+
   const db = require('./models/db');
+
   db.all("SELECT * FROM ogrenciler", (err, rows) => {
-    if (err) return res.send('Veri alınamadı');
+    if (err) {
+      console.error('Veri çekme hatası:', err);
+      return res.send('Veri alınamadı');
+    }
+
+    // ogrenciler.ejs'ye veriyi gönder
     res.render('ogrenciler', { ogrenciler: rows });
   });
 });
