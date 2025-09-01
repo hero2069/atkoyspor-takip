@@ -73,6 +73,8 @@ app.get('/ogrenci-detay', (req, res) => {
 app.post('/ogrenci-kaydet', (req, res) => {
   if (!req.session.user) return res.status(403).send('Erişim reddedildi');
 
+  console.log('📝 Kaydedilmeye çalışılan veri:', req.body); // LOG 1
+
   const {
     tc, ad, soyad, dogumTarihi, dogumYeri, boy, kilo, kanGrubu,
     brans, telefon, okul, babaAd, babaTel, anneAd, anneTel, adres,
@@ -80,6 +82,7 @@ app.post('/ogrenci-kaydet', (req, res) => {
   } = req.body;
 
   const db = require('./models/db');
+
   const stmt = db.prepare(`INSERT INTO ogrenciler (
     tc_no, ad, soyad, dogum_tarihi, dogum_yeri, boy, kilo, kan_grubu,
     spor_bransi, telefon, okul, baba_adi, baba_telefon, anne_adi,
@@ -90,15 +93,13 @@ app.post('/ogrenci-kaydet', (req, res) => {
     tc, ad, soyad, dogumTarihi, dogumYeri, boy, kilo, kanGrubu,
     brans, telefon, okul, babaAd, babaTel, anneAd, anneTel, adres,
     acilAd, acilSoyad, acilYakinlik, acilTel, req.session.user,
-    (err) => {
+    function(err) {
       if (err) {
-        console.error('Kayıt hatası:', err);
+        console.error('❌ VERİTABANI HATASI:', err.message);
         return res.send('Kayıt yapılamadı: ' + err.message);
       }
-      res.send(`
-        <h3>✅ Öğrenci başarıyla kaydedildi!</h3>
-        <a href="/ogrenciler" class="btn btn-primary">Öğrenci Listesine Dön</a>
-      `);
+      console.log('✅ KAYIT BAŞARILI! ID:', this.lastID); // LOG 2
+      res.redirect('/ogrenciler'); // Liste sayfasına yönlendir
     }
   );
   stmt.finalize();
