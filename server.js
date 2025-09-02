@@ -54,8 +54,6 @@ app.get('/ogrenciler', (req, res) => {
       console.error('Veri çekme hatası:', err);
       return res.send('Veri alınamadı');
     }
-
-    // ogrenciler.ejs'ye veriyi gönder
     res.render('ogrenciler', { ogrenciler: rows });
   });
 });
