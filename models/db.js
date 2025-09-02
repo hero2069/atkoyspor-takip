@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 
 // Veritabanı dosyasının yolu
-const dbPath = path.resolve(__dirname, 'database.db');
+const dbPath = path.resolve(__dirname, '../database.db');
 
 // Klasör yoksa oluştur
 if (!fs.existsSync(path.dirname(dbPath))) {
